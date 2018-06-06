@@ -6,7 +6,7 @@
 /*   By: kmarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/03 16:02:16 by kmarchan          #+#    #+#             */
-/*   Updated: 2018/06/06 13:24:07 by kmarchan         ###   ########.fr       */
+/*   Updated: 2018/06/06 13:46:52 by kmarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ int		get_next_line(const int fd, char **line)
 		printf("f");
 		ptr = (ft_memchr(buf, '\n', BUFF_SIZE));
 		printf("f");
-		while (buf[l] != '\n')
-		{
-			ft_memcpy(*line, buf, 1);
-			buf[l] = '\0';
-			l++;
-		}
 		if ((*ptr) == '\n')
 		{
 			//(ptr - 1) = '\0';
