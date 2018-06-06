@@ -6,7 +6,7 @@
 /*   By: kmarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 08:19:18 by kmarchan          #+#    #+#             */
-/*   Updated: 2018/06/05 08:31:35 by kmarchan         ###   ########.fr       */
+/*   Updated: 2018/06/06 12:30:06 by kmarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 # include "libft.h"
 # include <fcntl.h>
 
-# define BUFF_SIZE 5
+# define BUFF_SIZE 10 
 
 typedef struct list
 {
-	char	*red;
+	char	*list;
+	char	*hold;
+	int		in;
 	int		fd;
 	int		i;
 }			ins;

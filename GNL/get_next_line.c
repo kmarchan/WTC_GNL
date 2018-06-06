@@ -6,76 +6,104 @@
 /*   By: kmarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/03 16:02:16 by kmarchan          #+#    #+#             */
-/*   Updated: 2018/06/05 11:15:02 by kmarchan         ###   ########.fr       */
+/*   Updated: 2018/06/06 13:24:07 by kmarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
+#include <stdio.h>
+
+int	read_next_buf(size_t in)
+{
+	if (in > 0)
+		return (1);
+	return (0);
+}
+
 
 int		get_next_line(const int fd, char **line)
 {
-	int 		i;
-	int 		j;
-	char		*ovr;
-	char		buf[BUFF_SIZE + 1];
-	char		*hold;
-	int			in;
+	size_t	in;
+	int l;
+	int r;
+	char *ptr;
+	char buf[BUFF_SIZE + 1];
 	static ins	*node;
-	static vec	*v;
 
-	if (node)
+	l = 0;
+	r = 0;
+	if (!node)
 		node = (ins*)ft_memalloc(sizeof(ins));
-	if ( 
-	hold = (char*)ft_memmalloc((BUFF_SIZE * 2) * sizeof(char));
+	if (!node->hold)
+		node->hold = (char *)ft_memalloc(sizeof(char) * 1000);
 	while ((in = read(fd, buf, BUFF_SIZE)) > 0)
 	{
+		r = read_next_buf(in);
+		printf("%d, %s\n", r,  buf);
+		printf("f");
+		ptr = (ft_memchr(buf, '\n', BUFF_SIZE));
+		printf("f");
+		while (buf[l] != '\n')
 		{
-			ovr = ft_linesplit((const char *)buf);
-		}	
-			return 
-		if ()
-			jasHGDKHJGFJKHGFHG
-			return;
-	}
-	if (!line)
-		return (-1);
-}
-
-static size_t	ft_countline(char const *s)
-{
-	size_t		l;
-	size_t		i;
-	char		c;
-
-	w = 0;
-	i = 0;
-	c = '\n'
-	if (!s)
-		return (0);
-	if (s[i] != c)
-		l++;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c && s[i - 1] != c) //&& s[i - 1] != '\0')
+			ft_memcpy(*line, buf, 1);
+			buf[l] = '\0';
 			l++;
-		i++;
+		}
+		if ((*ptr) == '\n')
+		{
+			//(ptr - 1) = '\0';
+			printf("f");
+			printf("%s", buf);
+			ft_memccpy(*line, buf, '\n', BUFF_SIZE);
+			l++;
+			ft_strclr(buf);
+			*buf = *ptr + 1;
+		}
+		printf("%s", buf);
+		printf("%zu\t, l [%s]\n", in, *line);
+		printf("%zu\t, p [%c]\n", in, *ptr);
+		ft_strcat(node->hold, buf);
+		ft_strclr(buf);
+		printf("%zu\t, h [%s]\n", in,  node->hold);
 	}
-	return (w);
+	return (1);
 }
 
-char			**ft_linesplit(char const *s)
+/*
+int main()
 {
-	size_t		w;
-	char		**ar;
+	int i;
+	
+    	// int fd = open("test.txt", O_RDONLY);
+	
+   	 // line = malloc(1000);
+ 	 // *line = malloc(1000);
 
-	if (!s)
-		return (NULL);
-	w = ft_countline(s);
-	ar = (char **)ft_memalloc(sizeof(char *) * (w + 1));
-	ft_strarr(s, ar, '\n', w);
-	if (!ar)
-		return (NULL);
-	return (ar);
+   	 int fd2 = open("test2.txt", O_RDONLY);
+   	 char     **line2;
+   	 // char    **line;
+   	 line2 = malloc(100000);
+   	 *line2 = malloc(100000);
+   	 // int id;
+
+   	 i = get_next_line(fd2, line2);
+  	 printf("%d : len : %zu [%s]\n",i ,ft_strlen(*line2), *line2);	
 }
+*/
 
+int	main()
+{
+	int fd = open("file.txt", O_RDONLY);
+	int i;
+	char **line;
 
+	line = malloc(1000);
+	*line = malloc(1000);	
+	i = get_next_line(fd, line);
+	printf("m%d\t, [%s]\n", i, *line);
+	i = get_next_line(fd, line); 
+	printf("m%d\t, [%s]\n", i, *line);
+	i = get_next_line(fd, line);
+	printf("m%d\t, [%s]\n", i, *line);
+	return (0);
+}

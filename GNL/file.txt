@@ -1,0 +1,6 @@
+this is is a file
+that needs to be split into lines
+defined by
+the size of the file or length of the line is not known before
+good luck
+
