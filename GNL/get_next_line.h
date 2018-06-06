@@ -19,11 +19,11 @@
 
 typedef struct list
 {
-	char	*list;
+	char	*ovr;
 	char	*hold;
 	int		in;
 	int		fd;
-	int		i;
+	int		lc;
 }			ins;
 
 #endif

@@ -20,45 +20,80 @@ int	read_next_buf(size_t in)
 	return (0);
 }
 
+int	ft_srchrep(char *str, char s, char r)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	if (str && s && r)
+	{
+		while (str[i] != '\0')
+		{
+			if (str[i] == s)
+			{
+				str[i] = r;
+			}	
+			i++;
+		}
+		count++;
+	}		
+	return (count);
+}
+
 
 int		get_next_line(const int fd, char **line)
 {
 	size_t	in;
 	int l;
-	int r;
-	char *ptr;
+//	int i;
+	int lc;
+//	char *ptr;
 	char buf[BUFF_SIZE + 1];
 	static ins	*node;
 
 	l = 0;
-	r = 0;
+//	r = 0;
 	if (!node)
 		node = (ins*)ft_memalloc(sizeof(ins));
 	if (!node->hold)
 		node->hold = (char *)ft_memalloc(sizeof(char) * 1000);
 	while ((in = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		r = read_next_buf(in);
-		printf("%d, %s\n", r,  buf);
-		printf("f");
-		ptr = (ft_memchr(buf, '\n', BUFF_SIZE));
-		printf("f");
-		if ((*ptr) == '\n')
+	//	r = read_next_buf(in);
+	//	printf("before %s, ", buf);
+	//	lc = ft_srchrep(buf, '\n', '\0');
+//		i = 0;
+	//	printf("after %s\n, ", buf);
+		while (l <= lc)//i < BUFF_SIZE)
 		{
-			//(ptr - 1) = '\0';
-			printf("f");
-			printf("%s", buf);
-			ft_memccpy(*line, buf, '\n', BUFF_SIZE);
+			ptr = ft_memccpy(*line, buf, '\0', BUFF_SIZE);
 			l++;
-			ft_strclr(buf);
-			*buf = *ptr + 1;
 		}
-		printf("%s", buf);
-		printf("%zu\t, l [%s]\n", in, *line);
-		printf("%zu\t, p [%c]\n", in, *ptr);
-		ft_strcat(node->hold, buf);
-		ft_strclr(buf);
-		printf("%zu\t, h [%s]\n", in,  node->hold);
+		while (l--)
+		{
+			ft_strclr(buf);
+		}
+		/*	printf("%d, %s\n", r,  buf);
+			printf("f");
+			ptr = (ft_memchr(buf, '\n', BUFF_SIZE));
+			printf("f");
+			if ((*ptr) == '\n')
+			{
+				//(ptr - 1) = '\0';
+				printf("f");
+				printf("%s", buf);
+				ft_memccpy(*line, buf, '\n', BUFF_SIZE);
+				l++;
+				ft_strclr(buf);
+				*buf = *ptr + 1;*/
+	//		printf("%s", buf);
+	//		printf("%zu\t, l [%s]\n", in, *line);
+	//	printf("%zu\t, p [%c]\n", in, *ptr);
+			ft_strcat(node->hold, buf);
+			ft_strclr(buf);
+//			printf("%zu\t, h [%s]\n", in,  node->hold);
 	}
 	return (1);
 }
