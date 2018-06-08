@@ -6,14 +6,30 @@
 /*   By: kmarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 07:45:48 by kmarchan          #+#    #+#             */
-/*   Updated: 2018/06/08 14:32:04 by kmarchan         ###   ########.fr       */
+/*   Updated: 2018/06/08 14:06:29 by kmarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include "get_next_line.h"
+int	chrcount(char *s, char c)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
+}
 
 int	get_next_line(const int fd, char **line)
 {
+//	int		c = 0;
 	int		in;
 	char	buf[BUFF_SIZE + 1];
 	char	*ptr;
@@ -36,22 +52,39 @@ int	get_next_line(const int fd, char **line)
 	while ((in = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[in] = '\0';
+//		node->c = chrcount(buf, '\n');
+//		node->c--;
+//		printf("c %d\n", node->c);
 		ft_strcat(node->hold, buf);
 		if  (ft_strchr(buf, '\n'))
+		{
 			break;
+		}
 		ft_bzero(buf, BUFF_SIZE);
+//		node->c++;
 	}
 	ptr = NULL;
+//	node->c = chrcout(node->hold, '\n');
 	if (ft_strchr(node->hold, '\n'))
+	{	
 		*(ptr = ft_strchr(node->hold, '\n')) = '\0';
+	}
 	*line = ft_strdup(node->hold);
 	ft_strclr(node->hold);	
 	if (ptr)
 		ft_strcat(node->ovr, ptr + 1);
 	else 
 		ft_strcat(node->ovr, buf);
+//	if (node->c)
+//		return (1);
 	if (in >= 0 && ft_strlen(*line) > 0)
+	{
+//		node->c--;
+//		printf("%d\n", node->c);
 		return (1);
+	}
 	else
-		return (0);	
+	   return (0);	
 }
+
+

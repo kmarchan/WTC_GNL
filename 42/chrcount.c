@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   chrcount.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 08:19:18 by kmarchan          #+#    #+#             */
-/*   Updated: 2018/06/08 14:18:18 by kmarchan         ###   ########.fr       */
+/*   Created: 2018/06/08 14:15:45 by kmarchan          #+#    #+#             */
+/*   Updated: 2018/06/08 14:23:45 by kmarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "libft/libft.h"
-# include <fcntl.h>
-
-# define BUFF_SIZE 100
-
-typedef struct list
+int	chrcount(char *s, char c)
 {
-	char	*ovr;
-	char	*hold;
-	int		in;
-	int		fd;
-	int		c;
-}			ins;
+	int i;
+	int count;
 
-int	get_next_line(const int fd, char **line);
-int	read_line(int fd, char **line);
-int	chrcount(char *s, char c);
-#endif
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
+}
