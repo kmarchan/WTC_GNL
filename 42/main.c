@@ -20,12 +20,12 @@ int    main()
     {    
         count++;
         i = get_next_line(fd, line);
- printf("%d: Buff: {%d}  len: %zu [%s]\n",i ,BUFF_SIZE,ft_strlen(*line), *line);
+//		 printf("%d: Buff: {%d}  len: %zu [%s]\n",i ,BUFF_SIZE,ft_strlen(*line), *line);
     }
      end = clock();
     
 
     time_spent = (double)(end - start) / CLOCKS_PER_SEC;
-     printf("%f\n",time_spent); 
+    printf("%f\n",time_spent); 
     return(0);
 }
