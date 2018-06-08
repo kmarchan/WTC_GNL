@@ -27,4 +27,8 @@ typedef struct list
 }			ins;
 
 int	get_next_line(const int fd, char **line);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 538a4ae27d27c0cc77073682b9608231df562114
 #endif
