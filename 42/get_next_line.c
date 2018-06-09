@@ -6,7 +6,7 @@
 /*   By: kmarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 07:45:48 by kmarchan          #+#    #+#             */
-/*   Updated: 2018/06/08 15:03:14 by kmarchan         ###   ########.fr       */
+/*   Updated: 2018/06/09 10:42:24 by kmarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -33,20 +33,14 @@ int	get_next_line(const int fd, char **line)
 		ft_strcat(node->hold, node->ovr);
 		ft_strclr(node->ovr);
 	}
-	if ((chrcount(node->hold, '\n')) >= 1)
-	{	
-		while ((in = read(fd, buf, BUFF_SIZE)) > 0)
-		{
-			buf[in] = '\0';
-			ft_strcat(node->hold, buf);
-			if  (ft_strchr(buf, '\n'))
-				break;
-			ft_bzero(buf, BUFF_SIZE);
-		}
+	while ((in = read(fd, buf, BUFF_SIZE)) > 0)
+	{
+		buf[in] = '\0';
+		ft_strcat(node->hold, buf);
+		if  (ft_strchr(buf, '\n'))
+			break;
+		ft_bzero(buf, BUFF_SIZE);
 	}
-	else 
-		in = 1;
-	printf("hold = %s\n", node->hold);
 	ptr = NULL;
 	if (ft_strchr(node->hold, '\n'))
 		*(ptr = ft_strchr(node->hold, '\n')) = '\0';

@@ -20,7 +20,7 @@ int    main()
     {    
         count++;
         i = get_next_line(fd, line);
-//		 printf("%d: Buff: {%d}  len: %zu [%s]\n",i ,BUFF_SIZE,ft_strlen(*line), *line);
+		 printf("%d: Buff: {%d}  len: %zu [%s]\n", i, BUFF_SIZE, ft_strlen(*line), *line);
     }
      end = clock();
     
