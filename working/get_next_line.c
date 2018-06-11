@@ -10,26 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "get_next_line.h"
 
-//int	chrcount(char *s, char c)
-//{
-//	int i;
-//	int count;
-//
-//	i = 0;
-//	count = 0;
-///	while (s[i] != '\0')
-//	{
-//		if (s[i] == c)
-//			count++;
-//		i++;
-//	}
-//	return (count);
-//}
-
-static int	read_line(int fd, char *buf, ins *node)
+int	read_line(int fd, char *buf, ins *node)
 {
 	int		in;
 	int		count;
@@ -54,7 +37,7 @@ static int	read_line(int fd, char *buf, ins *node)
 	return (0);
 }
  
-int	remaining(ins *node, char *pts, char **line)
+int	remaining(ins *node, char *ptr, char **line)
 {
 	int		cont;
 
@@ -89,11 +72,11 @@ int			manage_line(ins *node, int fd, char *buf, char **line)
 		n++;
 	}
 	if ((cont = remaining(node, ptr, line)) != 0)
-		return (cont)
+		return (cont);
 	else 
-		ft_strcat(node->ovr, buf)
-	if (node->hold[0] != '\0')
-		carryon = 1;
+		ft_strcat(node->ovr, buf);
+//	if (node->hold[0] != '\0')
+//		cont = 1;
 	if (in > 0 || n > 0 || cont == 1)
 		return (1);
 	return (0);
@@ -116,7 +99,7 @@ int			get_next_line(const int fd, char **line)
 	if (!node->ovr)
 		node->ovr = (char *)ft_memalloc(sizeof(char) * 55000);
 	in = manage_line(node, fd, buf, line);
-	if ((ft_strlen(*line) > 0))
+	if (in > 0)
 		return (1);
 	else
 		return (0);
