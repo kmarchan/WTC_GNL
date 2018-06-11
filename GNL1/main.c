@@ -1,4 +1,4 @@
-
+#include <fcntl.h>
 #include <time.h>
 #include <stdio.h>
 #include "get_next_line.h"
@@ -10,17 +10,17 @@ int    main()
      
      start = clock();
     int i;
-    int fd = open("test.txt", O_RDONLY);
-    char    **line;
-    line = malloc(100000);
-    *line = malloc(100000);
+    int fd = open("2line.txt", O_RDONLY);
+    char    *line;
     i = 1;
     int count = 0;
     while (i > 0)
     {    
         count++;
-        i = get_next_line(fd, line);
-		 printf("%d: Buff: {%d}  len: %zu [%s]\n", i, BUFF_SIZE, ft_strlen(*line), *line);
+        i = get_next_line(fd, &line);
+		 printf("%d: Buff: {%d}  len: %zu [%s]\n", i, BUFF_SIZE, ft_strlen(line), line);
+		if(i)
+		ft_strdel(&line);
     }
      end = clock();
     

@@ -6,7 +6,7 @@
 /*   By: kmarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 08:19:18 by kmarchan          #+#    #+#             */
-/*   Updated: 2018/06/09 10:55:19 by kmarchan         ###   ########.fr       */
+/*   Updated: 2018/06/11 14:07:35 by kmarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ typedef struct list
 }			ins;
 
 int	get_next_line(const int fd, char **line);
+int	chrcount(char *s, char c);
 #endif
