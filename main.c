@@ -10,7 +10,7 @@ int    main()
      
      start = clock();
     int i;
-    int fd = open("large_file.txt", O_RDONLY);
+    int fd = open("failed.txt", O_RDONLY);
     char    **line;
     line = malloc(100000);
     *line = malloc(100000);
